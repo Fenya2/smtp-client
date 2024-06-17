@@ -5,7 +5,6 @@ import os
 import base64
 
 from email.message import EmailMessage
-from email.header import Header
 
 
 def send(sender, recipients, email):
@@ -29,7 +28,7 @@ def attach_pictures(mail, pictures_dir):
     :param pictures_dir: директория с картинками
     """
     for pic in os.listdir(pictures_dir):
-        with open(pictures_dir+pic, 'rb') as f:
+        with open(pictures_dir + pic, 'rb') as f:
             data = f.read()
         mail.add_attachment(
             data,
@@ -62,6 +61,11 @@ def get_recipients(file):
 
 
 def generate_subject(subject):
+    """
+    Кодирует строку в utf-8, полученный байты преобразует
+    в base64, и формирует строку для не ascii заголовка
+    :param subject: строка - тема письма
+    """
     subject = base64.b64encode(subject.encode('utf-8')).decode('ascii')
     return f'=?UTF-8?B?{subject}?='
 
@@ -81,10 +85,8 @@ def create_message():
 
 def main():
     msg = create_message()
-    print(msg)
     send(config.SENDER, re.split(r', ', msg['To']), str(msg))
 
 
 if __name__ == '__main__':
-    # print(get_recipients('recipients.txt'))
     main()

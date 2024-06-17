@@ -1,4 +1,4 @@
-# логин пользователя
+﻿# логин пользователя
 LOGIN = "fenya74.09"
 
 # пароль отправителя
@@ -17,10 +17,10 @@ PORT = 587
 RECIPIENTS = "./recipients.txt"
 
 # тема письма
-SUBJECT = "тема на русском"
+SUBJECT = "Viacheslav"
 
 # путь к файлу с текстом письма
 TEXT = "./text.txt"
 
 # путь к директории с картинками
-PICTURES = "./resources/pics/"
+PICTURES = "./resources/"
